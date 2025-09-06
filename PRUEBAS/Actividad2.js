@@ -2,7 +2,7 @@ class InicioPAM {
 
     desplegarReglamentoDAM() {
        const contenedor = document.getElementById("Contenido");
-       contenedor.innerHTML = "<h1>Reglamento DAM</h1><p>Contenido del reglamento...</p>";
+       contenedor.innerHTML = " <h1>Reglamento</h1><ol><li>Participación activa en clase</li><li>Trabajos en classroom </li><li>Entregas completas</li><li>Respetar tiempos de entrega </li><li>Presentación de trabajo calidad universitaria</li></ol>";
     }
 
     desplegarLineamientosClassroom() {
