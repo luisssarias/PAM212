@@ -6,11 +6,10 @@ const productos = [
     { nombre: "Monitor", precio: 3000 },
 ];
 
-const Precio = productos.filter(producto => producto.precio > 1000);
-console.log("Productos con precio mayor a 1000:");
-console.log(Precio);
+const nombresProducto = productos
+    .filter(producto => producto.precio > 1000)
+    .map(producto => producto.nombre);
+    console.log("Productos:")
+    console.log(nombresProducto);
 
-const resultadoPrecio = productos.map(producto => producto.nombre);
-console.log("Nombres de los productos:");
-console.log(resultadoPrecio);
 
