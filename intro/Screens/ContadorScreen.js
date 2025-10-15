@@ -17,6 +17,7 @@ export default function App() {
       <Button color = "black" title="Incrementar" onPress={() => setContador(contador + 1)} />
       <Button color = "black" title="Quitar" onPress={() => setContador(contador - 1)} />
       <Button color = "black" title="Reiniciar" onPress={() => setContador(0)} />
+
       </View>
 
       <StatusBar style="auto" />
