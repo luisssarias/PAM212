@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View } from 'react-native'
 
-export default function FlatListScreen() {
+export default function FlatScreen() {
 
     return (
       <View>
