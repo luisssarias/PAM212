@@ -10,6 +10,7 @@ import ActivityScreen from './ActivityScreen';
 import ModalScreen from './ModalScreen';
 import BottomSheetScreen from './BottomSheetScreen';
 import FlatScreen from './FlatScreen';
+import Repaso1Screen from './Repaso1Screen';
 
 
 export default function MenuScreen () {
@@ -34,6 +35,8 @@ export default function MenuScreen () {
             return <ModalScreen/>
         case 'bottomsheet':
             return <BottomSheetScreen/>
+        case 'repaso1':
+            return <Repaso1Screen/>
         case 'menu':
             default: 
                 return (
@@ -48,6 +51,7 @@ export default function MenuScreen () {
                         <Button onPress={() => setScreen('modal')} title="Pract: Modal"/>
                         <Button onPress={() => setScreen('bottomsheet')} title="Pract: BottomSheet"/>
                         <Button onPress={() => setScreen('flat')} title="Pract: FlatList"/>
+                        <Button onPress={() => setScreen('repaso1')} title="Pract: Repaso 1"/>
                     </View>
                 )
 
