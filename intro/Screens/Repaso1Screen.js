@@ -101,7 +101,7 @@ export default function Repaso1Screen() {
   if (showMain) {
     return (
       <ImageBackground
-        source={require("../assets/paisaje.jpg")}
+        source={require("../assets/PAISAJE.jpg")}
         style={styles.background}
         resizeMode="cover"
       >
