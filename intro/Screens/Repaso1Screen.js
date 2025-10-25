@@ -31,7 +31,7 @@ export default function Repaso1Screen() {
   const fadeOut = useRef(new Animated.Value(1)).current;
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  
+    
 
   useEffect(() => {
     Animated.parallel([
@@ -101,7 +101,7 @@ export default function Repaso1Screen() {
   if (showMain) {
     return (
       <ImageBackground
-        source={require("../assets/PAISAJE.jpg")}
+        source={require("../assets/paisaje.jpg")}
         style={styles.background}
         resizeMode="cover"
       >
