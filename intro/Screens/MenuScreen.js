@@ -53,7 +53,7 @@ export default function MenuScreen () {
                         <Button onPress={() => setScreen('activity')} title="Pract: ActivityIndicator"/>
                         <Button onPress={() => setScreen('modal')} title="Pract: Modal"/>
                         <Button onPress={() => setScreen('bottomsheet')} title="Pract: BottomSheet"/>
-                        <Button onPress={() => setScreen('flat')} title="Pract: FlatList"/>
+                        <Button onPress={() => setScreen('flatlist')} title="Pract: FlatList"/>
                         <Button onPress={() => setScreen('repaso1')} title="Pract: Repaso 1"/>
                         <Button onPress={() => setScreen('ScrollScreen2')} title="Pract: ScrollScreen2"/>
                     </View>
