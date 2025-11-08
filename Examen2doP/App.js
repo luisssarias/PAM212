@@ -10,22 +10,22 @@ import {
 const categorias = [
   {
     titulo: 'Deportes',
-    data: ['Americano: El fútbol americano es un deporte norteamericano creado en los Estados Unidos en 1869, que deriva del rugby inglés y se practica actualmente en más de setenta países, aunque su popularidad es más intensa en Norteamérica.', 'Fútbol: El fútbol es un deporte de equipo que se juega entre dos equipos de once jugadores con una pelota esférica. Es el deporte más popular del mundo, con más de 4.000 millones de aficionados.', 'Béisbol: El béisbol es un deporte de equipo que se juega entre dos equipos de nueve jugadores cada uno. Es muy popular en Estados Unidos, América Latina y Asia.'],
+    data: ['Americano: El fútbol americano es un deporte norteamericano creado en los Estados Unidos en 1869, que deriva del rugby inglés y se practica actualmente en más de setenta países, aunque su popularidad es más intensa en Norteamérica.', 'Fútbol: El fútbol es un deporte de equipo que se juega entre dos equipos de once jugadores con una pelota esférica. Es el deporte más popular del mundo, con más de 4.000 millones de aficionados.'],
   },
   {
     titulo: 'Tecnología',
-    data: ['Apple', 'Android'],
+    data: ['Apple: Apple Inc. es una empresa de tecnología estadounidense que diseña, fabrica y comercializa productos electrónicos de consumo, software y servicios en línea.', 'Android: Android es un sistema operativo basado en Linux diseñado principalmente para dispositivos móviles con pantalla táctil, como teléfonos inteligentes y tabletas.'],
   },
   {
     titulo: 'Entretenimiento',
-    data: ['HBO', 'Netflix'],
+    data: ['HBO: HBO es una cadena de televisión por cable estadounidense que ofrece una variedad de programas originales, películas y documentales.', 'Netflix: Netflix es un servicio de streaming que ofrece una amplia variedad de series, películas y documentales a sus suscriptores.'],
   },
 ];
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>+ Deportes y algo más</Text>
+        <Text style={styles.title}>+ Deportes y algo más</Text>
       <SectionList
         sections={categorias}
         keyExtractor={(item, index) => item + index}
@@ -40,12 +40,6 @@ export default function App() {
       />
     </View>
   );
-}
-
-export function imagenes() {
-
-
-
 }
 
 
@@ -71,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   itemText: {
-    color: '#fff',
+    color: '#ffffffff',
     fontSize: 20,
   },
   sectionHeader: {
