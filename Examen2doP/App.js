@@ -5,7 +5,10 @@ import {
   SectionList,
   StyleSheet,
   ScrollView,
+  Switch,
 } from 'react-native';
+
+
 
 const categorias = [
   {
