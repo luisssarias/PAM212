@@ -11,6 +11,10 @@ export default function InsertUsuarioScreen() {
   const [nombre, setNombre] = useState('');
   const [loading, setLoading] = useState(true);
   const [guardando, setGuardando] = useState(false);
+  const [modoEditar, setModoEditar] = useState(false);
+  const [idEdicion, setIdEdicion] = useState(null);
+
+
 
   // Cargar usuarios desde BD
   const cargarUsuarios = useCallback(async () => {
@@ -66,6 +70,68 @@ export default function InsertUsuarioScreen() {
     }
   };
 
+  const handleEliminar = async (id) => {
+    const confirmado = await confirmar("¿Seguro que deseas eliminar este usuario?");
+    if (!confirmado) return;
+    await eliminar(id);
+  
+  };
+
+  {/* Función que sirve para cargar los datos al editarlos */}
+
+  const handleEditar = (usuario) => {
+    setModoEditar(true);
+    setIdEdicion(usuario.id);
+    setNombre(usuario.nombre);
+  };
+
+  {/* Función para actualizar los datos  */}
+
+const handleActualizar = async () => {
+  if (!nombre.trim()) return Alert.alert("Error", "Escribe un nombre");
+
+  try {
+    await controller.actualizarUsuario(idEdicion, nombre.trim());
+    Alert.alert("Éxito", "Usuario actualizado correctamente");
+
+    setModoEditar(false);
+    setIdEdicion(null);
+    setNombre('');
+    cargarUsuarios();
+
+  } catch (error) {
+    Alert.alert("Error", error.message);
+  }
+};
+
+
+
+  const eliminar = async (id) => {
+    try {
+        await controller.eliminarUsuario(id);
+        cargarUsuarios(); 
+    } catch (error) {
+        Alert.alert("Error", error.message);
+    }
+  };
+
+  const confirmar = async (mensaje) => {
+    if (Platform.OS === "web") {
+      return window.confirm(mensaje);
+    } else {
+      return new Promise((resolve) => {
+        Alert.alert(
+          "Confirmación",
+          mensaje,
+          [
+            { text: "Cancelar", onPress: () => resolve(false), style: "cancel" },
+            { text: "Aceptar", onPress: () => resolve(true) }
+          ]
+        );
+      });
+    }
+  };
+
   // Render usuario
   const renderUsuario = ({ item, index }) => (
     <View style={styles.userItem}>
@@ -85,8 +151,24 @@ export default function InsertUsuarioScreen() {
             })
           }
         </Text>
+
+        {/* Botón Eliminar */}
+
+        <TouchableOpacity onPress={() => handleEliminar(item.id)} style={styles.botonEliminar}>
+        <Text style={styles.textoEliminar}>Eliminar</Text>
+        </TouchableOpacity>
+
+        {/* Botón Editar */}
+
+        <TouchableOpacity onPress={() => handleEditar(item)}>
+        <Text style={{ color: "blue", fontWeight: "600" }}>Editar</Text>
+        </TouchableOpacity>
+
+
+
       </View>
-    </View>
+     </View>
+
   );
 
   return (
@@ -113,16 +195,15 @@ export default function InsertUsuarioScreen() {
         />
 
         <TouchableOpacity
-          style={[styles.button, guardando && styles.buttonDisabled]}
-          onPress={handleAgregar}
-          disabled={guardando}
+        style={[styles.button, guardando && styles.buttonDisabled]}
+        onPress={modoEditar ? handleActualizar : handleAgregar}
+        disabled={guardando}
         >
-          <Text style={styles.buttonText}>
-            {guardando ? "Guardando..." : "Agregar Usuario"}
-          </Text>
+        <Text style={styles.buttonText}>
+        {modoEditar ? "Actualizar Usuario" : guardando ? "Guardando..." : "Agregar Usuario"}
+        </Text>
         </TouchableOpacity>
-
-      </View>
+    </View>
 
       {/* SELECT */}
       <View style={styles.selectSection}>
@@ -318,4 +399,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#bbb',
   },
+  botonEliminar: {
+    paddingVertical: 4,
+},
+
+textoEliminar: {
+    color: "red",
+    fontSize: 14,
+    fontWeight: "600",
+},
 });
